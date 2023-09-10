@@ -1,38 +1,45 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      DuocUC
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-
-
   <div class="container">
     <div class="row">
       <div class="ion-padding">
         <div class="custom-containers">
-          <h1 style="text-align: center;">TeLlevoApp</h1>
+          <img src="assets/TeLlevoApp.png" width="200px" alt="Automóvil"
+            style="margin-left: 50px;">
         </div>
-        <hr><hr>
-        <ion-item>
-          <ion-label position="floating">Email</ion-label>
-          <ion-input type="Email"></ion-input>
-        </ion-item>
         <hr>
-        <ion-item>
-          <ion-label position="floating">Contraseña</ion-label>
-          <ion-input type="password"></ion-input>
-        </ion-item>
         <hr>
-        <ion-router-link routerLink="/recuperar">Recuperar Contraseña</ion-router-link>
-        <hr><hr><hr><hr>
-        <div style="text-align: center;">
-          <ion-button shape="round" [routerLink]="['/inicio']">Ingresar</ion-button>
-        </div>
+        <form #loginForm="ngForm">
+          <ion-item>
+            <ion-label position="floating">Usuario</ion-label>
+            <ion-input [(ngModel)]="username" name="username" required></ion-input>
+          </ion-item>
+          <hr>
+          <ion-item>
+            <ion-label position="floating">Contraseña</ion-label>
+            <ion-input type="password" [(ngModel)]="password" name="password"
+              required></ion-input>
+          </ion-item>
+          <hr>
+          <hr>
+          <h5>Recuerdame</h5>
+          <mat-slide-toggle>Recuerdame</mat-slide-toggle>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <hr>
+          <ion-router-link routerLink="/recuperar">Recuperar Contraseña</ion-router-link>
+          <hr><hr><hr><hr>
+          <div style="text-align: center;">
+            <!-- Añade un campo oculto para el nombre de usuario -->
+            <input type="hidden" [(ngModel)]="username" name="hiddenUsername">
+            <ion-button shape="round" (click)="login()"
+              [disabled]="!loginForm.valid">Ingresar</ion-button>
+          </div>
+          <hr><hr><hr><hr>
+          <div class="animacion-element">
+            <img src="assets/Camaro.png" alt="Automóvil">
+          </div>
+          <div><ion-button shape="round" [routerLink]="['/prueba']">prueba</ion-button></div>
+        </form>
       </div>
     </div>
   </div>
-
 </ion-content>

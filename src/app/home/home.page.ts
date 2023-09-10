@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
+import { NavController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-home',
@@ -8,10 +10,22 @@ import { Router } from '@angular/router';
 })
 export class HomePage {
 
-  constructor(private router: Router) {}
+  username: string = '';
+  password: string = '';
 
-  navigate(){
-    this.router.navigate(['/detail'])
-  }
+  constructor(private router: Router, private navCtrl: NavController) { }
 
+  login() {
+    const dataToPass = {
+      username: this.username,
+    };
+
+   const navigationExtras: NavigationExtras = {
+    state: {
+      formData: dataToPass
+    }
+  };
+  this.router.navigate(['/inicio'], navigationExtras);
 }
+}
+
