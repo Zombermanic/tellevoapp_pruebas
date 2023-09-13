@@ -11,12 +11,12 @@
         <form #loginForm="ngForm">
           <ion-item>
             <ion-label position="floating">Usuario</ion-label>
-            <ion-input [(ngModel)]="username" name="username" required></ion-input>
+            <ion-input [(ngModel)]="user.username" name="user.username" required></ion-input>
           </ion-item>
           <hr>
           <ion-item>
             <ion-label position="floating">Contraseña</ion-label>
-            <ion-input type="password" [(ngModel)]="password" name="password"
+            <ion-input type="password" [(ngModel)]="user.password" name="user.password"
               required></ion-input>
           </ion-item>
           <hr>
@@ -28,8 +28,6 @@
           <ion-router-link routerLink="/recuperar">Recuperar Contraseña</ion-router-link>
           <hr><hr><hr><hr>
           <div style="text-align: center;">
-            <!-- Añade un campo oculto para el nombre de usuario -->
-            <input type="hidden" [(ngModel)]="username" name="hiddenUsername">
             <ion-button shape="round" (click)="login()"
               [disabled]="!loginForm.valid">Ingresar</ion-button>
           </div>

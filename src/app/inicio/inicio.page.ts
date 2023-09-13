@@ -1,22 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component} from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.page.html',
   styleUrls: ['./inicio.page.scss'],
 })
-export class InicioPage implements OnInit {
-  username: string = '';
+export class InicioPage{
+  state: any;
+  user: any;
 
-  constructor(private route: ActivatedRoute) { }
-
-  ngOnInit() {
-    this.route.paramMap.subscribe(params => {
-      if (params.has('username')) {
-        const userData = params.get('username'); // Obtén el valor del parámetro 'username'
-        this.username = userData; // Asigna el valor a la propiedad 'username' de la página
-      }
-    });
+  constructor(private activeroute: ActivatedRoute, private router: Router) { 
+    this.activeroute.queryParams.subscribe(params => {
+      this.state = this.router.getCurrentNavigation()?.extras.state;
+      console.log(this.state);
+    })
   }
 }
